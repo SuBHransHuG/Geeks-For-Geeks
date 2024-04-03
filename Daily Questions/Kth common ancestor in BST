@@ -1,0 +1,35 @@
+class Solution {
+    public int kthCommonAncestor(Node root, int k, int x, int y) {
+        int t = 1;
+        Node tem=root;
+        while(root!=null){
+            if(root.data>x && root.data>y){
+                root=root.left;
+                t++;
+            }
+            else if(root.data<x && root.data<y){
+                root=root.right;
+                t++;
+            }
+            else break;
+        }
+        int c=1;
+        t-=k;
+        t++;
+        root=tem;
+        while(root!=null){
+            if(c==t)return root.data;
+            if(root.data>x && root.data>y){
+                root=root.left;
+                c++;
+            }
+            else if(root.data<x && root.data<y){
+                root=root.right;
+                c++;
+            }
+            else break;
+        }
+        return -1;
+    }
+        
+    }
